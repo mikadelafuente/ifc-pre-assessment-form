@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Insurance Pre‑Assessment Form</title>
+
+<style>
+  :root {
+    --primary: #000000;
+    --secondary: #f2f2f2;
+    --surface: #ffffff;
+    --heading: #000000;
+    --body: #333333;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #eeeeee;
+    color: var(--body);
+    padding: 32px 16px;
+  }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  header h1 {
+    margin: 0;
+    color: var(--heading);
+    font-size: 32px;
+  }
+
+  header p {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .section {
+    margin-top: 40px;
+  }
+
+  .section h2 {
+    font-size: 20px;
+    color: var(--heading);
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #d6d0c4;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  textarea { min-height: 100px; resize: vertical; }
+
+  /* === Checkbox group alignment === */
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+  }
+  fieldset legend {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--heading);
+  }
+
+  .checkboxes {
+    display: grid;
+    gap: 10px 16px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: start;
+  }
+
+  .checkboxes label {
+    display: flex;
+    align-items: flex-start; 
+    gap: 10px;
+    font-weight: 500; 
+    margin: 0;       
+    line-height: 1.3;
+  }
+
+  .checkboxes input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px; 
+    flex: 0 0 auto;
+  }
+
+  .actions {
+    margin-top: 48px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 32px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  button:hover { background: #2a5068; }
+
+  footer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.6;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .card { padding: 24px; }
+    header h1 { font-size: 26px; }
+    /* On very small screens, a single column for checkboxes is more readable */
+    .checkboxes {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="card">
+
+      <header>
+        <div>
+          <h1>Insurance Pre‑Assessment</h1>
+          <p>Confidential client health and employment questionnaire</p>
+        </div>
+      </header>
+
+      <form>
+
+        <div class="section">
+          <h2>Personal details</h2>
+          <div class="grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" type="text" />
+            </div>
+            <div>
+              <label for="dob">Date of birth</label>
+              <input id="dob" type="date" />
+            </div>
+            <div>
+              <label for="smoker">Smoker / Vaping</label>
+              <select id="smoker">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div>
+              <label for="height">Height (cm)</label>
+              <input id="height" type="number" />
+            </div>
+            <div>
+              <label for="weight">Weight (kg)</label>
+              <input id="weight" type="number" />
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Health history</h2>
+          <label for="weightloss">Unintentional weight loss (last 12 months)</label>
+          <textarea id="weightloss"></textarea>
+
+          <label for="druguse">Non‑prescribed drug use (last 5 years)</label>
+          <textarea id="druguse"></textarea>
+
+          <label for="medications">Current or previous medications</label>
+          <textarea id="medications"></textarea>
+        </div>
+
+        <div class="section">
+          <h2>Employment</h2>
+          <div class="grid">
+            <div>
+              <label for="occupation">Occupation title</label>
+              <input id="occupation" type="text" />
+            </div>
+            <div>
+              <label for="employmentType">Employment type</label>
+              <select id="employmentType">
+                <option>Permanent</option>
+                <option>Casual</option>
+                <option>Contract</option>
+                <option>Self‑employed</option>
+              </select>
+            </div>
+            <div>
+              <label for="hours">Hours per week</label>
+              <input id="hours" type="number" />
+            </div>
+          </div>
+
+          <label for="duties">Work duties (% breakdown)</label>
+          <textarea id="duties" placeholder="Administration, light manual, manual labour, hazardous activities"></textarea>
+        </div>
+
+        <div class="section">
+          <h2>Medical conditions</h2>
+
+          <fieldset aria-labelledby="medicalConditionsLegend">
+            <legend id="medicalConditionsLegend">Select any that apply</legend>
+
+            <div class="checkboxes">
+              <label for="cond-heart">
+                <input id="cond-heart" type="checkbox" />
+                <span>Heart disease / stroke</span>
+              </label>
+
+              <label for="cond-diabetes">
+                <input id="cond-diabetes" type="checkbox" />
+                <span>Diabetes</span>
+              </label>
+
+              <label for="cond-mental">
+                <input id="cond-mental" type="checkbox" />
+                <span>Mental health conditions</span>
+              </label>
+
+              <label for="cond-back">
+                <input id="cond-back" type="checkbox" />
+                <span>Back or joint issues</span>
+              </label>
+
+              <label for="cond-cancer">
+                <input id="cond-cancer" type="checkbox" />
+                <span>Cancer</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label for="medicalDetails">Details</label>
+          <textarea id="medicalDetails"></textarea>
+        </div>
+
+        <div class="section">
+          <h2>Family &amp; travel</h2>
+          <label for="familyHistory">Family medical history (before age 65)</label>
+          <textarea id="familyHistory"></textarea>
+
+          <label for="travelPlans">Overseas travel or relocation plans (next 2 years)</label>
+          <textarea id="travelPlans"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button">Submit (Demo)</button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <footer>
+      Infinity Financial Consultants · Wealth Creation · Accounting · Lending
+    </footer>
+  </div>
+
+</body>
+</html>
