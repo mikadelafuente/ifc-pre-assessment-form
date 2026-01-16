@@ -90,7 +90,6 @@
 
   textarea { min-height: 100px; resize: vertical; }
 
-  /* === Checkbox group alignment === */
   fieldset {
     border: none;
     padding: 0;
@@ -151,13 +150,18 @@
     text-align: center;
   }
 
+  /* Status text */
+  .status {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #555;
+  }
+  .status.error { color: #b00020; }
+
   @media (max-width: 600px) {
     .card { padding: 24px; }
     header h1 { font-size: 26px; }
-    /* On very small screens, a single column for checkboxes is more readable */
-    .checkboxes {
-      grid-template-columns: 1fr;
-    }
+    .checkboxes { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -165,7 +169,6 @@
 
   <div class="page">
     <div class="card">
-
       <header>
         <div>
           <h1>Insurance Pre‑Assessment</h1>
@@ -173,8 +176,7 @@
         </div>
       </header>
 
-      <form>
-
+      <form id="preForm" novalidate>
         <div class="section">
           <h2>Personal details</h2>
           <div class="grid">
@@ -291,9 +293,10 @@
         </div>
 
         <div class="actions">
-          <button type="button">Submit (Demo)</button>
+          <button type="button" id="demoSubmit">Submit (Demo)</button>
         </div>
 
+        <div id="status" class="status" aria-live="polite"></div>
       </form>
 
     </div>
@@ -303,5 +306,7 @@
     </footer>
   </div>
 
+  <!-- Load the external JS -->
+  <script src="./app.js" defer></script>
 </body>
 </html>
